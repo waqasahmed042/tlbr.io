@@ -4,8 +4,8 @@ import UIText from "@/utilities/testResource";
 import { MdOutlineFileDownload } from "react-icons/md";
 import Windows from "./windows";
 import Version from "./version";
-import SystemRequirements from "./SystemRequirements";
-import InstallationGuide from "./InstallationGuide";
+import SystemRequirements from "./systemRequirements";
+import InstallationGuide from "./installationGuide";
 
 const Download: React.FC = () => {
     return (
