@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import UIText from "@/utilities/testResource";
-import ProfileInformation from "./ProfileInformation";
-import AccountManagement from "./AccountManagement";
+import ProfileInformation from "./profileInformation";
+import AccountManagement from "./accountManagement";
 
 const Setting: React.FC = () => {
     return (
