@@ -57,3 +57,10 @@ export interface Payment {
     status: "Paid" | "Pending" | "Failed";
     invoice: string;
 }
+
+export interface ConfirmDeteleDialogProps {
+    isModalOpen: boolean;
+    setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    setToastType: React.Dispatch<React.SetStateAction<"error" | "success" | "info" | null>>;
+    setToastMessage: React.Dispatch<React.SetStateAction<string>>;
+}

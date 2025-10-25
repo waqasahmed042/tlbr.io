@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Label from "@/components/ui/input/Label";
@@ -8,6 +8,7 @@ import Checkbox from "@/components/ui/input/Checkbox";
 import { GoEye } from "react-icons/go";
 import { GoEyeClosed } from "react-icons/go";
 import { ShowToastProps } from "@/utilities/type";
+import UIText from "@/utilities/testResource";
 
 const SignInForm: React.FC<ShowToastProps> = ({ onShowToast }) => {
   const router = useRouter();
@@ -19,20 +20,6 @@ const SignInForm: React.FC<ShowToastProps> = ({ onShowToast }) => {
     message: string;
     color: string;
   }>({ message: "", color: "" });
-
-  // Check login persistence on page load
-  useEffect(() => {
-    const savedUser = localStorage.getItem("userSession");
-    if (savedUser) {
-      const parsedUser = JSON.parse(savedUser);
-      if (parsedUser.keepMeLoggedIn === true) {
-        router.push("/");
-      } else {
-        localStorage.removeItem("userSession");
-        router.push("/signin");
-      }
-    }
-  }, [router]);
 
   // Evaluate Password Strength
   const evaluatePasswordStrength = (value: string) => {
@@ -100,7 +87,7 @@ const SignInForm: React.FC<ShowToastProps> = ({ onShowToast }) => {
       <form className="space-y-6 mt-8" onSubmit={handleSignIn}>
         <div>
           <Label>
-            Email <span className="text-error-500">*</span>
+            {UIText.auth.signIn.email} <span className="text-error-500">*</span>
           </Label>
           <Input
             placeholder="info@gmail.com"
@@ -114,7 +101,7 @@ const SignInForm: React.FC<ShowToastProps> = ({ onShowToast }) => {
 
         <div>
           <Label>
-            Password <span className="text-error-500">*</span>
+            {UIText.auth.signIn.password} <span className="text-error-500">*</span>
           </Label>
           <div className="relative">
             <Input
@@ -150,14 +137,14 @@ const SignInForm: React.FC<ShowToastProps> = ({ onShowToast }) => {
           <div className="flex items-center gap-3">
             <Checkbox checked={isChecked} onChange={setIsChecked} />
             <span className="block font-normal text-gray-700 text-theme-sm dark:text-gray-400">
-              Keep me logged in
+              {UIText.auth.signIn.keep_me_signed_in}
             </span>
           </div>
           <Link
             href="/reset-password"
             className="text-sm text-brand-500 hover:text-brand-600 dark:text-brand-400"
           >
-            Forgot password?
+            {UIText.auth.signIn.forgotPassword}
           </Link>
         </div>
 
@@ -165,7 +152,7 @@ const SignInForm: React.FC<ShowToastProps> = ({ onShowToast }) => {
           type="submit"
           className="inline-flex items-center justify-center gap-3 py-3 w-full text-sm font-normal bg-[#FFAB00] text-white hover:bg-[#ffbc37] hover:text-white rounded-full px-7 transition-colors"
         >
-          Sign in
+          {UIText.auth.signIn.button}
         </button>
       </form>
     </>

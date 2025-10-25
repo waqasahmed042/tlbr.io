@@ -7,6 +7,7 @@ import Checkbox from "@/components/ui/input/Checkbox";
 import { GoEye } from "react-icons/go";
 import { GoEyeClosed } from "react-icons/go";
 import { ShowToastProps } from "@/utilities/type";
+import UIText from "@/utilities/testResource";
 
 const SignUpForm: React.FC<ShowToastProps> = ({ onShowToast }) => {
   const router = useRouter();
@@ -99,7 +100,7 @@ const SignUpForm: React.FC<ShowToastProps> = ({ onShowToast }) => {
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           <div className="sm:col-span-1">
             <Label>
-              First Name<span className="text-error-500">*</span>
+              {UIText.auth.signUp.email}<span className="text-error-500">*</span>
             </Label>
             <Input
               type="text"
@@ -112,7 +113,7 @@ const SignUpForm: React.FC<ShowToastProps> = ({ onShowToast }) => {
           </div>
           <div className="sm:col-span-1">
             <Label>
-              Last Name<span className="text-error-500">*</span>
+              {UIText.auth.signUp.l_name}<span className="text-error-500">*</span>
             </Label>
             <Input
               type="text"
@@ -127,7 +128,7 @@ const SignUpForm: React.FC<ShowToastProps> = ({ onShowToast }) => {
 
         <div>
           <Label>
-            Email<span className="text-error-500">*</span>
+            {UIText.auth.signUp.email}<span className="text-error-500">*</span>
           </Label>
           <Input
             type="email"
@@ -141,7 +142,7 @@ const SignUpForm: React.FC<ShowToastProps> = ({ onShowToast }) => {
 
         <div>
           <Label>
-            Password<span className="text-error-500">*</span>
+            {UIText.auth.signUp.password}<span className="text-error-500">*</span>
           </Label>
           <div className="relative">
             <Input
@@ -180,13 +181,13 @@ const SignUpForm: React.FC<ShowToastProps> = ({ onShowToast }) => {
             onChange={setIsChecked}
           />
           <p className="inline-block font-normal text-gray-500 dark:text-gray-400">
-            By creating an account, you agree to the{" "}
+            {UIText.auth.signUp.by_creating_account}{" "}
             <span className="text-gray-800 dark:text-white/90">
-              Terms and Conditions
+              {UIText.auth.signUp.terms_and_conditions}
             </span>{" "}
-            and our{" "}
+            {UIText.auth.signUp.and_our}{" "}
             <span className="text-gray-800 dark:text-white">
-              Privacy Policy
+              {UIText.auth.signUp.privacy_policy}
             </span>
           </p>
         </div>
@@ -195,7 +196,7 @@ const SignUpForm: React.FC<ShowToastProps> = ({ onShowToast }) => {
           type="submit"
           className="inline-flex items-center justify-center gap-3 py-3 w-full text-sm font-normal bg-[#FFAB00] text-white hover:bg-[#ffbc37] hover:text-white rounded-full px-7 transition-colors"
         >
-          Sign Up
+          {UIText.auth.signUp.button}
         </button>
       </form>
     </>
