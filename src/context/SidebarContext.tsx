@@ -1,18 +1,6 @@
 "use client";
+import { SidebarContextType } from "@/utilities/type";
 import React, { createContext, useContext, useState, useEffect } from "react";
-
-type SidebarContextType = {
-  isExpanded: boolean;
-  isMobileOpen: boolean;
-  isHovered: boolean;
-  activeItem: string | null;
-  openSubmenu: string | null;
-  toggleSidebar: () => void;
-  toggleMobileSidebar: () => void;
-  setIsHovered: (isHovered: boolean) => void;
-  setActiveItem: (item: string | null) => void;
-  toggleSubmenu: (item: string) => void;
-};
 
 const SidebarContext = createContext<SidebarContextType | undefined>(undefined);
 
@@ -64,21 +52,24 @@ export const SidebarProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   return (
-    <SidebarContext.Provider
-      value={{
-        isExpanded: isMobile ? false : isExpanded,
-        isMobileOpen,
-        isHovered,
-        activeItem,
-        openSubmenu,
-        toggleSidebar,
-        toggleMobileSidebar,
-        setIsHovered,
-        setActiveItem,
-        toggleSubmenu,
-      }}
-    >
-      {children}
-    </SidebarContext.Provider>
+    <>
+      <SidebarContext.Provider
+        value={{
+          isExpanded: isMobile ? false : isExpanded,
+          isMobileOpen,
+          isHovered,
+          activeItem,
+          openSubmenu,
+          toggleSidebar,
+          toggleMobileSidebar,
+          setIsHovered,
+          setActiveItem,
+          toggleSubmenu,
+          setIsMobileOpen
+        }}
+      >
+        {children}
+      </SidebarContext.Provider>
+    </>
   );
 };
