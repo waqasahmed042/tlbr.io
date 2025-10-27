@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
 import Label from "@/components/ui/input/Label";
 import Input from "@/components/ui/input/InputField";
 import Checkbox from "@/components/ui/input/Checkbox";
@@ -10,7 +9,6 @@ import { ShowToastProps } from "@/utilities/type";
 import UIText from "@/utilities/testResource";
 
 const SignUpForm: React.FC<ShowToastProps> = ({ onShowToast }) => {
-  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [fname, setFname] = useState("");
@@ -90,8 +88,6 @@ const SignUpForm: React.FC<ShowToastProps> = ({ onShowToast }) => {
     setPassword("");
     setIsChecked(false);
     setPasswordStrength({ message: "", color: "" });
-
-    router.push("/");
   };
 
   return (

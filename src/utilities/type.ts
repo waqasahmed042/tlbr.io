@@ -58,7 +58,14 @@ export interface Payment {
     invoice: string;
 }
 
-export interface ConfirmDeteleDialogProps {
+export interface DialogProps {
+    isModalOpen: boolean;
+    setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    setToastType: React.Dispatch<React.SetStateAction<"error" | "success" | "info" | null>>;
+    setToastMessage: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export interface DialogProps {
     isModalOpen: boolean;
     setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
     setToastType: React.Dispatch<React.SetStateAction<"error" | "success" | "info" | null>>;

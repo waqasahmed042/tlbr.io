@@ -1,8 +1,8 @@
 import React from 'react';
 import { Modal } from '@/components/ui/modal';
-import { ConfirmDeteleDialogProps } from '@/utilities/type';
+import { DialogProps } from '@/utilities/type';
 
-const ConfirmDeteleDialog: React.FC<ConfirmDeteleDialogProps> = ({
+const ConfirmDeteleDialog: React.FC<DialogProps> = ({
     isModalOpen,
     setIsModalOpen,
     setToastType,

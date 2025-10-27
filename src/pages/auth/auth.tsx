@@ -8,16 +8,19 @@ import SignInForm from "./SignInForm";
 import SignUpForm from "./SignUpForm";
 import Toast from "@/hooks/useToast";
 import UIText from "@/utilities/testResource";
+import OTPDialog from "./otpDialog";
 
 const Auth: React.FC = () => {
     const router = useRouter();
     const [activeForm, setActiveForm] = useState<"signin" | "signup">("signin");
     const [toastType, setToastType] = useState<"error" | "success" | "info" | null>(null);
     const [toastMessage, setToastMessage] = useState("");
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleShowToast = (type: "error" | "success" | "info", message: string) => {
         setToastType(type);
         setToastMessage(message);
+        setIsModalOpen(true);
 
         // Auto-hide after 3s
         setTimeout(() => {
@@ -116,18 +119,28 @@ const Auth: React.FC = () => {
                         </div>
                     </div>
                 </div>
-
-                {/* Global Toast */}
-                {toastType && (
-                    <div className="fixed bottom-6 right-6 z-50">
-                        <Toast
-                            infoMessage={toastType === "info" ? toastMessage : ""}
-                            errorMessage={toastType === "error" ? toastMessage : ""}
-                            successMessage={toastType === "success" ? toastMessage : ""}
-                        />
-                    </div>
-                )}
             </div>
+
+            {/* OTP Modal */}
+            {isModalOpen && (
+                <OTPDialog
+                    isModalOpen={isModalOpen}
+                    setIsModalOpen={setIsModalOpen}
+                    setToastType={setToastType}
+                    setToastMessage={setToastMessage}
+                />
+            )}
+
+            {/* Global Toast */}
+            {toastType && (
+                <div className="fixed bottom-6 right-6 z-50">
+                    <Toast
+                        infoMessage={toastType === "info" ? toastMessage : ""}
+                        errorMessage={toastType === "error" ? toastMessage : ""}
+                        successMessage={toastType === "success" ? toastMessage : ""}
+                    />
+                </div>
+            )}
         </>
     );
 };
