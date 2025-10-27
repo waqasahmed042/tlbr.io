@@ -1,7 +1,7 @@
 "use client";
-import { ModalProps } from "@/utilities/type";
 import React, { useRef, useEffect } from "react";
 import { IoClose } from "react-icons/io5";
+import { ModalProps } from "@/utilities/type";
 
 export const Modal: React.FC<ModalProps> = ({
   isOpen,

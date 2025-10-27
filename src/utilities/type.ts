@@ -58,6 +58,15 @@ export interface Payment {
     invoice: string;
 }
 
+export interface ModalProps {
+    isOpen: boolean;
+    onClose: () => void;
+    className?: string;
+    children: React.ReactNode;
+    showCloseButton?: boolean;
+    isFullscreen?: boolean;
+}
+
 export interface DialogProps {
     isModalOpen: boolean;
     setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
